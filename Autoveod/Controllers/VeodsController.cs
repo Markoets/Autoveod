@@ -149,5 +149,33 @@ namespace Autoveod.Controllers
         {
             return _context.Veod.Any(e => e.Id == id);
         }
+
+
+
+
+
+        // GET: Veods/Create
+        public IActionResult Telli()
+        {
+            return View();
+        }
+
+        // POST: Veods/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Telli([Bind("Id,Algus,Ots,Aeg,Autonr,JuhtEesnimi,JuhtPerenimi,Valmis")] Veod veod)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(veod);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(veod);
+        
+        }
+
     }
 }
