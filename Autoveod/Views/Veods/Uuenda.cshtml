@@ -1,37 +1,36 @@
 ﻿@model Autoveod.Models.Veod
-
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Uuenda";
 }
 
-<h1>Edit</h1>
+<h1>Uuenda</h1>
 
 <h4>Veod</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Uuenda">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Nimi" class="control-label"></label>
-                <input asp-for="Nimi" class="form-control" />
+                <input asp-for="Nimi" class="form-control" readonly />
                 <span asp-validation-for="Nimi" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Aeg" class="control-label"></label>
+                <input asp-for="Aeg" class="form-control" readonly />
+                <span asp-validation-for="Aeg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Algus" class="control-label"></label>
-                <input asp-for="Algus" class="form-control" />
+                <input asp-for="Algus" class="form-control" readonly />
                 <span asp-validation-for="Algus" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Ots" class="control-label"></label>
-                <input asp-for="Ots" class="form-control" />
+                <input asp-for="Ots" class="form-control" readonly />
                 <span asp-validation-for="Ots" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Aeg" class="control-label"></label>
-                <input asp-for="Aeg" class="form-control" />
-                <span asp-validation-for="Aeg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Autonr" class="control-label"></label>
@@ -48,11 +47,9 @@
                 <input asp-for="JuhtPerenimi" class="form-control" />
                 <span asp-validation-for="JuhtPerenimi" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Valmis" class="control-label"></label>
-                <input asp-for="Valmis" class="form-control" />
-                <span asp-validation-for="Valmis" class="text-danger"></span>
-            </div>
+            @Html.DropDownListFor(m => m.Valmis,
+            new SelectList(Enum.GetValues(typeof(Valmis))),
+            "Vali staatus")
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

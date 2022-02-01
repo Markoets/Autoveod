@@ -4,14 +4,16 @@ using Autoveod.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Autoveod.Migrations
 {
     [DbContext(typeof(AutoveodContext))]
-    partial class AutoveodContextModelSnapshot : ModelSnapshot
+    [Migration("20220201111604_Nimi")]
+    partial class Nimi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,8 +49,8 @@ namespace Autoveod.Migrations
                     b.Property<string>("Ots")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Valmis")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Valmis")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

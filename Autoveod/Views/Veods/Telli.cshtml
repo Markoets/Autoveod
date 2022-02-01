@@ -13,6 +13,11 @@
         <form asp-action="Telli">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Nimi" class="control-label"></label>
+                <input asp-for="Nimi" class="form-control" />
+                <span asp-validation-for="Nimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Algus" class="control-label"></label>
                 <input asp-for="Algus" class="form-control" />
                 <span asp-validation-for="Algus" class="text-danger"></span>
@@ -27,7 +32,7 @@
                 <input asp-for="Aeg" class="form-control" />
                 <span asp-validation-for="Aeg" class="text-danger"></span>
             </div>
-           
+
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

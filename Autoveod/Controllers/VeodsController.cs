@@ -21,8 +21,18 @@ namespace Autoveod.Controllers
 
         // GET: Veods
         public async Task<IActionResult> Index()
+
         {
             return View(await _context.Veod.ToListAsync());
+        }
+
+
+        // GET: veods/juhita
+        public async Task<IActionResult> Juhita()
+        {
+
+            var model = _context.Veod.Where(e => e.JuhtPerenimi==null);
+            return View(await model.ToListAsync());
         }
 
         // GET: Veods/Details/5
@@ -165,7 +175,7 @@ namespace Autoveod.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Telli([Bind("Id,Algus,Ots,Aeg,Autonr,JuhtEesnimi,JuhtPerenimi,Valmis")] Veod veod)
+        public async Task<IActionResult> Telli([Bind("Id,Nimi,Algus,Ots,Aeg,Autonr,JuhtEesnimi,JuhtPerenimi,Valmis")] Veod veod)
         {
             if (ModelState.IsValid)
             {
@@ -175,6 +185,60 @@ namespace Autoveod.Controllers
             }
             return View(veod);
         
+        }
+
+
+
+
+        // GET: Veods/Uuenda/5
+        public async Task<IActionResult> Uuenda(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veod = await _context.Veod.FindAsync(id);
+            if (veod == null)
+            {
+                return NotFound();
+            }
+            return View(veod);
+        }
+
+        // POST: Veods/uuenda/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Uuenda(int id, [Bind("Id,Nimi,Algus,Ots,Aeg,Autonr,JuhtEesnimi,JuhtPerenimi,Valmis")] Veod veod)
+        {
+            if (id != veod.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(veod);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!VeodExists(veod.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(veod);
         }
 
     }

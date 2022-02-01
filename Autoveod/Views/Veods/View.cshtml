@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Autoveod.Models.Veod>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "View";
 }
 
-<h1>Index</h1>
+<h1>View</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -67,7 +67,6 @@
                 @Html.DisplayFor(modelItem => item.Valmis)
             </td>
             <td>
-                <a asp-action="Uuenda" asp-route-id="@item.Id">Uuenda</a>|
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
