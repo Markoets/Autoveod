@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Autoveod.Models.Veod>
+
+@{
+    ViewData["Title"] = "Tegemata";
+}
+
+<h1>Tegemata</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Algus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ots)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autonr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JuhtEesnimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JuhtPerenimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valmis)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Algus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ots)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aeg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autonr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JuhtEesnimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JuhtPerenimi)
+            </td>
+            <td>
+                @if (item.Valmis == null)
+                {
+                    <a asp-action="Valmis" asp-route-id="@(item.Id)">Click if done</a>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Valmis)
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

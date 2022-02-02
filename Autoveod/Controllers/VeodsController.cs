@@ -35,6 +35,15 @@ namespace Autoveod.Controllers
             return View(await model.ToListAsync());
         }
 
+
+
+        // GET: veods/juhita
+        public async Task<IActionResult> Tegemata()
+        {
+
+            var model = _context.Veod.Where(e => e.Valmis == null && e.Autonr!=null);
+            return View(await model.ToListAsync());
+        }
         // GET: Veods/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -205,6 +214,41 @@ namespace Autoveod.Controllers
             }
             return View(veod);
         }
+
+
+
+
+        public async Task<IActionResult> Valmis(int Id)
+        {
+            var veod = await _context.Veod.FindAsync(Id);
+            if (veod == null)
+            {
+                return NotFound();
+            }
+            veod.Valmis = "Tehtud";
+            try
+            {
+                _context.Update(veod);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!VeodExists(veod.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+
+            }
+
+            return RedirectToAction("Tegemata");
+        }
+
+
+
 
         // POST: Veods/uuenda/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

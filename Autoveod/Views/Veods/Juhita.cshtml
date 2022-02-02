@@ -33,9 +33,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.JuhtPerenimi)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Valmis)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -55,13 +52,23 @@
                 @Html.DisplayFor(modelItem => item.Aeg)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Autonr)
+
+                        <div class="form-group">
+                            <input value="@item.Autonr" class="form-control" name="@nameof(item.Autonr)"  form="@("vorm"+item.Id)" />
+                        </div>
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.JuhtEesnimi)
+
+ 
+                        <div class="form-group">
+                            <input value="@item.JuhtEesnimi" class="form-control" name="@nameof(item.JuhtEesnimi)" form="@("vorm"+item.Id)" />
+                        </div>
+
+
             </td>
             <td>
-                <form asp-action="Uuenda">
+                <form asp-action="Uuenda" id="@("vorm"+item.Id)">
                     <input type="hidden" value="@item.Id" name="@nameof(item.Id)" />
                     <input type="hidden" value="@item.Nimi" name="@nameof(item.Nimi)" />
                     <input type="hidden" value="@item.Algus" name="@nameof(item.Algus)" />
@@ -82,11 +89,7 @@
                 @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valmis)
-            </td>
-            <td>
+        
                 @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
