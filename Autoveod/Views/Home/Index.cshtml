@@ -1,8 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<body class=" bg-info">
 
-<div class="text-center">
-    <h1 class="display-4">Autoveod</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4 text-light">Autoveod</h1>
+        <img src="~/img/smiley.png" alt="Sample Photo" />
+        <p class="font-weight-bold text-light">Väga õnnelik klient kuna ta teab et ta auto viiakse turvaliselt ära!</p>
+        <p class="text-light">Tee seda ka sina siit!</p>
+        <button class="bg-info  float-md-none"> <a class=" text-light" asp-area="" asp-controller="Veods" asp-action="telli">Telli</a></button>
+
+
+
+        <img src="~/img/car_preview_rev_1.png" alt="Sample Photo" />
+
+    </div>
+</body>
