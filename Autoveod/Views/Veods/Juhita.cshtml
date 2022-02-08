@@ -4,97 +4,102 @@
     ViewData["Title"] = "Juhita";
 }
 
-<h1>Juhita</h1>
+<body class="bg-info">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nimi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Algus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ots)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aeg)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autonr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JuhtEesnimi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JuhtPerenimi)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nimi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Algus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ots)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aeg)
-            </td>
-            <td>
+    <h1 class="text-white">Juhita</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table text-white">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Algus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ots)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aeg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autonr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JuhtEesnimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JuhtPerenimi)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Algus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ots)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aeg)
+                    </td>
+                    <td>
 
                         <div class="form-group">
-                            <input value="@item.Autonr" class="form-control" name="@nameof(item.Autonr)"  form="@("vorm"+item.Id)" />
+                            <input value="@item.Autonr" class="form-control" name="@nameof(item.Autonr)" form="@("vorm"+item.Id)" />
                         </div>
 
-            </td>
-            <td>
+                    </td>
+                    <td>
 
- 
+
                         <div class="form-group">
                             <input value="@item.JuhtEesnimi" class="form-control" name="@nameof(item.JuhtEesnimi)" form="@("vorm"+item.Id)" />
                         </div>
 
 
-            </td>
-            <td>
-                <form asp-action="Uuenda" id="@("vorm"+item.Id)">
-                    <input type="hidden" value="@item.Id" name="@nameof(item.Id)" />
-                    <input type="hidden" value="@item.Nimi" name="@nameof(item.Nimi)" />
-                    <input type="hidden" value="@item.Algus" name="@nameof(item.Algus)" />
-                    <input type="hidden" value="@item.Ots" name="@nameof(item.Ots)" />
-                    <input type="hidden" value="@item.Autonr" name="@nameof(item.Autonr)" />
-                    <input type="hidden" value="@item.JuhtEesnimi" name="@nameof(item.JuhtEesnimi)" />
-                    <input type="hidden" value="@item.Valmis" name="@nameof(item.Valmis)" />
-                    <div class="d-flex">
-                        <div class="form-group">
-                            <input value="@item.JuhtPerenimi" class="form-control" name="@nameof(item.JuhtPerenimi)" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Salvesta" class="btn btn-primary" />
-                        </div>
-                    </div>
-                </form>
+                    </td>
+                    <td>
+                        <form asp-action="Uuenda" id="@("vorm"+item.Id)">
+                            <input type="hidden" value="@item.Id" name="@nameof(item.Id)" />
+                            <input type="hidden" value="@item.Nimi" name="@nameof(item.Nimi)" />
+                            <input type="hidden" value="@item.Algus" name="@nameof(item.Algus)" />
+                            <input type="hidden" value="@item.Ots" name="@nameof(item.Ots)" />
+                            <input type="hidden" value="@item.Aeg" name="@nameof(item.Aeg)" />
+                            <input type="hidden" value="@item.Autonr" name="@nameof(item.Autonr)" />
+                            <input type="hidden" value="@item.JuhtEesnimi" name="@nameof(item.JuhtEesnimi)" />
+                            <input type="hidden" value="@item.Valmis" name="@nameof(item.Valmis)" />
+                            <div class="d-flex">
+                                <div class="form-group">
+                                    <input value="@item.JuhtPerenimi" class="form-control" name="@nameof(item.JuhtPerenimi)" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Salvesta" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </form>
 
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-        
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
