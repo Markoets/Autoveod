@@ -14,11 +14,14 @@ namespace Autoveod.Models
         public string Ots { get; set; }
         public DateTime Aeg { get; set; }
         [DisplayFormat(NullDisplayText = "Puudub")]
+        [Display(Name = "Juhi auto number")]
         public string Autonr { get; set; }
         [DisplayFormat(NullDisplayText = "Puudub")]
+        [Display(Name = "Juhi eesnimi")]
         public string JuhtEesnimi { get; set; }
         [DisplayFormat(NullDisplayText = "Puudub")]
-        public string JuhtPerenimi { get; set; }
+        [Display(Name ="Juhi perekonna nimi")]
+        public string JuhtPerenimi { get; set; } 
         [DisplayFormat(NullDisplayText = "Tegemata")]
         public string Valmis { get; set; }
     }

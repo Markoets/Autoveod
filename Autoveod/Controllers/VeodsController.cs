@@ -26,7 +26,12 @@ namespace Autoveod.Controllers
             return View(await _context.Veod.ToListAsync());
         }
 
+        public async Task<IActionResult> Kõik()
 
+        {
+            var model = _context.Veod.OrderBy(e => e.Valmis).ThenBy(e=>e.Autonr).ThenBy(e=>e.JuhtEesnimi).ThenBy(e=>e.JuhtPerenimi);
+            return View(await model.ToListAsync());
+        }
         // GET: veods/juhita
         public async Task<IActionResult> Juhita()
         {
@@ -280,7 +285,7 @@ namespace Autoveod.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Kõik));
             }
             return View(veod);
         }
